@@ -1,6 +1,11 @@
 from fastapi import FastAPI
+from todo import todo_router
+from model import Todo
 
 app = FastAPI()
+
+# Подключаем роутер ПЕРЕД другими endpoint
+app.include_router(todo_router)
 
 @app.get("/")
 async def welcome() -> dict:
